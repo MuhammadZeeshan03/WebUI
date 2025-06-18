@@ -1,4 +1,4 @@
-import AnimatedSection from "./animated-section"
+import AnimatedSection from "./AnimatedSection"
 import { motion } from "framer-motion"
 
 const Analytics = () => {
