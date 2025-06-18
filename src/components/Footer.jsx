@@ -1,5 +1,5 @@
 import { FaDribbbleSquare, FaFacebookSquare, FaGithubSquare, FaInstagram, FaTwitterSquare } from "react-icons/fa"
-import AnimatedSection from "./animated-section"
+import AnimatedSection from "./AnimatedSection"
 import { motion } from "framer-motion"
 
 const Footer = () => {

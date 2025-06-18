@@ -1,14 +1,5 @@
 import { motion } from "framer-motion"
-import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
-import type { ReactNode } from "react"
-
-interface AnimatedSectionProps {
-  children: ReactNode
-  className?: string
-  animation?: "fadeIn" | "slideUp" | "slideLeft" | "slideRight" | "scale"
-  delay?: number
-  duration?: number
-}
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver"
 
 const animations = {
   fadeIn: {
@@ -33,13 +24,7 @@ const animations = {
   },
 }
 
-export default function AnimatedSection({
-  children,
-  className = "",
-  animation = "fadeIn",
-  delay = 0,
-  duration = 0.6,
-}: AnimatedSectionProps) {
+export default function AnimatedSection({ children, className = "", animation = "fadeIn", delay = 0, duration = 0.6 }) {
   const { ref, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
     triggerOnce: true,
