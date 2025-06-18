@@ -6,7 +6,7 @@ const Cards = () => {
     {
       title: "Single User",
       price: "$149",
-      image: "/placeholder.svg?height=80&width=80",
+      image: "/src/assets/single.png",
       features: ["500 GB Storage", "1 Granted User", "Send up to 2 GB"],
       buttonStyle: "bg-[#00df9a] text-black",
       cardStyle: "bg-white",
@@ -14,7 +14,7 @@ const Cards = () => {
     {
       title: "Partnership",
       price: "$199",
-      image: "/placeholder.svg?height=80&width=80",
+      image: "/src/assets/double.png",
       features: ["1 TB Storage", "3 Granted Users", "Send up to 10 GB"],
       buttonStyle: "text-[#00df9a] bg-black",
       cardStyle: "bg-gray-100",
@@ -22,7 +22,7 @@ const Cards = () => {
     {
       title: "Group Account",
       price: "$299",
-      image: "/placeholder.svg?height=80&width=80",
+      image: "/src/assets/triple.png",
       features: ["5 TB Storage", "10 Granted Users", "Send up to 20 GB"],
       buttonStyle: "bg-[#00df9a] text-black",
       cardStyle: "bg-white",
@@ -46,7 +46,7 @@ const Cards = () => {
                 <motion.img
                   src={card.image}
                   alt={card.title}
-                  className="w-20 mx-auto mt-[-3rem] bg-white rounded-full p-2"
+                  className="w-20 h-auto mx-auto bg-white rounded-full shadow-lg p-2"
                   initial={{ scale: 0, rotate: -180 }}
                   whileInView={{ scale: 1, rotate: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
