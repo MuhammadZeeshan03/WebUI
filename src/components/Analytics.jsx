@@ -1,5 +1,3 @@
-"use client"
-
 import AnimatedSection from "./animated-section"
 import { motion } from "framer-motion"
 
