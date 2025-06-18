@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { useIntersectionObserver } from "../hooks/useIntersectionObserver"
+import { useIntersectionObserver } from "../hooks/useINtersectionObserver"
 
 const animations = {
   fadeIn: {
@@ -24,6 +24,7 @@ const animations = {
   },
 }
 
+// eslint-disable-next-line react/prop-types
 export default function AnimatedSection({ children, className = "", animation = "fadeIn", delay = 0, duration = 0.6 }) {
   const { ref, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
