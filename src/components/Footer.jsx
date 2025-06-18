@@ -1,66 +1,108 @@
-import React from 'react';
-import {
-    FaDribbbleSquare,
-    FaFacebookSquare,
-    FaGithubSquare,
-    FaInstagram,
-    FaTwitterSquare,
-} from 'react-icons/fa';
+import { FaDribbbleSquare, FaFacebookSquare, FaGithubSquare, FaInstagram, FaTwitterSquare } from "react-icons/fa"
+import AnimatedSection from "./animated-section"
+import { motion } from "framer-motion"
 
 const Footer = () => {
-    return (
-        <div className='max-w-[1240px] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300'>
-            <div>
-                <h1 className='w-full text-3xl font-bold text-[#00df9a]'>REACT.</h1>
-                <p className='py-4'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit ullam iste repellat consequatur libero reiciendis, blanditiis accusantium.</p>
-                <div className='flex justify-between md:w-[75%] my-6'>
-                    <FaFacebookSquare size={30} />
-                    <FaInstagram size={30} />
-                    <FaTwitterSquare size={30} />
-                    <FaGithubSquare size={30} />
-                    <FaDribbbleSquare size={30} />
-                </div>
-            </div>
-            <div className='lg:col-span-2 flex justify-between mt-6'>
-                <div>
-                    <h6 className='font-medium text-gray-400'>Solutions</h6>
-                    <ul>
-                        <li className='py-2 text-sm'>Analytics</li>
-                        <li className='py-2 text-sm'>Marketing</li>
-                        <li className='py-2 text-sm'>Commerce</li>
-                        <li className='py-2 text-sm'>Insights</li>
-                    </ul>
-                </div>
-                <div>
-                    <h6 className='font-medium text-gray-400'>Support</h6>
-                    <ul>
-                        <li className='py-2 text-sm'>Pricing</li>
-                        <li className='py-2 text-sm'>Documentation</li>
-                        <li className='py-2 text-sm'>Guides</li>
-                        <li className='py-2 text-sm'>API Status</li>
-                    </ul>
-                </div>
-                <div>
-                    <h6 className='font-medium text-gray-400'>Company</h6>
-                    <ul>
-                        <li className='py-2 text-sm'>About</li>
-                        <li className='py-2 text-sm'>Blog</li>
-                        <li className='py-2 text-sm'>Jobs</li>
-                        <li className='py-2 text-sm'>Press</li>
-                        <li className='py-2 text-sm'>Careers</li>
-                    </ul>
-                </div>
-                <div>
-                    <h6 className='font-medium text-gray-400'>Legal</h6>
-                    <ul>
-                        <li className='py-2 text-sm'>Claim</li>
-                        <li className='py-2 text-sm'>Policy</li>
-                        <li className='py-2 text-sm'>Terms</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    );
-};
+  const socialIcons = [
+    { Icon: FaFacebookSquare, name: "Facebook" },
+    { Icon: FaInstagram, name: "Instagram" },
+    { Icon: FaTwitterSquare, name: "Twitter" },
+    { Icon: FaGithubSquare, name: "GitHub" },
+    { Icon: FaDribbbleSquare, name: "Dribbble" },
+  ]
 
-export default Footer;
+  const footerSections = [
+    {
+      title: "Solutions",
+      links: ["Analytics", "Marketing", "Commerce", "Insights"],
+    },
+    {
+      title: "Support",
+      links: ["Pricing", "Documentation", "Guides", "API Status"],
+    },
+    {
+      title: "Company",
+      links: ["About", "Blog", "Jobs", "Press", "Careers"],
+    },
+    {
+      title: "Legal",
+      links: ["Claim", "Policy", "Terms"],
+    },
+  ]
+
+  return (
+    <div className="max-w-[1240px] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 bg-black">
+      <AnimatedSection animation="slideUp" delay={0.2}>
+        <div>
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="w-full text-3xl font-bold text-[#00df9a]"
+          >
+            REACT.
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="py-4"
+          >
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit ullam iste repellat consequatur libero
+            reiciendis, blanditiis accusantium.
+          </motion.p>
+
+          <div className="flex justify-between md:w-[75%] my-6">
+            {socialIcons.map(({ Icon, name }, index) => (
+              <motion.div
+                key={name}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                whileHover={{ scale: 1.2, color: "#00df9a" }}
+                className="cursor-pointer"
+              >
+                <Icon size={30} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      <div className="lg:col-span-2 flex justify-between mt-6">
+        {footerSections.map((section, sectionIndex) => (
+          <AnimatedSection key={section.title} animation="slideUp" delay={0.4 + sectionIndex * 0.1}>
+            <div>
+              <motion.h6
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="font-medium text-gray-400"
+              >
+                {section.title}
+              </motion.h6>
+
+              <ul>
+                {section.links.map((link, linkIndex) => (
+                  <motion.li
+                    key={link}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 + linkIndex * 0.05 }}
+                    whileHover={{ color: "#00df9a", x: 5 }}
+                    className="py-2 text-sm cursor-pointer transition-colors"
+                  >
+                    {link}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </AnimatedSection>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default Footer
